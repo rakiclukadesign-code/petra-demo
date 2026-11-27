@@ -300,7 +300,7 @@ p, li, dd { text-wrap: pretty; }
   h1 { font-size: 60px; }
   h2 { font-size: 44px; }
   .nav__cta { min-height: 48px; padding: 16px 28px; }
-  .hero { padding: 32px 0 96px; }
+  .hero { padding: 64px 0 96px; }
   .hero__sub { font-size: 20px; }
   .hero__pics { max-width: 560px; }
   .kraj, .home, .day, .visit { padding-block: 112px; }
@@ -348,7 +348,7 @@ p, li, dd { text-wrap: pretty; }
 
   h1 { font-size: 76px; }
   h2 { font-size: 56px; }
-  .hero { padding: 40px 0 112px; }
+  .hero { padding: 80px 0 112px; }
   .hero__in { grid-template-columns: 7fr 5fr; align-items: center; gap: 64px; }
   .hero__pics { max-width: none; }
   .hero__inset { left: -64px; width: 40%; }
