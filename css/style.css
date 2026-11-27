@@ -138,16 +138,16 @@ p, li, dd { text-wrap: pretty; }
 .nav__links a:hover { color: var(--zlatna-tamna); }
 
 /* ---------- hero ---------- */
-.hero { padding: 24px 0 64px; }
+.hero { padding: 60px 0 64px; }
 .hero__in { display: grid; gap: 40px; }
 .hero__sub { margin-top: 12px; font-size: 16px; max-width: 44ch; }
 .hero__btns { display: grid; gap: 12px; margin-top: 32px; }
 .hero__btns .btn, .visit__btns .btn { width: 100%; }
 
-.hero__pics { position: relative; padding-bottom: 48px; }
-.hero__arch { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--luk); }
+.hero__pics { position: relative; padding-bottom: 40px; width: 88%; margin-left: auto; }
+.hero__arch { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--luk); }
 .hero__inset {
-  position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1; object-fit: cover;
+  position: absolute; left: -32px; bottom: 0; width: 40%; aspect-ratio: 1 / 1; object-fit: cover;
   border: 8px solid var(--krem);
 }
 
@@ -302,7 +302,9 @@ p, li, dd { text-wrap: pretty; }
   .nav__cta { min-height: 48px; padding: 16px 28px; }
   .hero { padding: 64px 0 96px; }
   .hero__sub { font-size: 20px; }
-  .hero__pics { max-width: 560px; }
+  .hero__pics { max-width: 560px; width: auto; margin-left: 0; padding-bottom: 48px; }
+  .hero__arch { aspect-ratio: 4 / 5; }
+  .hero__inset { left: 0; width: 44%; }
   .kraj, .home, .day, .visit { padding-block: 112px; }
   .head { margin-bottom: 48px; }
   .kraj__in { grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
