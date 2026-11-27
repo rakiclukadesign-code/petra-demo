@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restoran Bar Petra, Valjevo</title>
+  <meta name="description" content="Restoran Bar Petra u Valjevu: pica, pasta i rižoto iz Italije, domaća kuhinja i riblji specijaliteti. Radimo od jutra do ponoći.">
+  <meta name="theme-color" content="#F6EFE2">
+  <link rel="icon" href="assets/logo-petra.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#sadrzaj">Preskoči na sadržaj</a>
+
+  <!-- 1. NAVIGACIJA -->
+  <header class="nav" id="nav">
+    <div class="nav__in container">
+      <a class="nav__logo" href="#vrh" aria-label="Restoran Bar Petra, početak stranice">
+        <img src="assets/logo-petra.png" width="56" height="56" alt="Logo Restoran Bar Petra">
+      </a>
+      <nav class="nav__links" id="nav-links" aria-label="Glavna navigacija">
+        <a href="#meni">Meni</a>
+        <a href="#riba">Riba</a>
+        <a href="#o-nama">O nama</a>
+        <a href="#kontakt">Kontakt</a>
+        <div class="nav__foot">
+          <p>Vuka Karadžića 15, Valjevo</p>
+          <a href="tel:+381603452525">+381 60 3452525</a>
+        </div>
+      </nav>
+      <a class="btn btn--dark nav__cta" href="tel:+381603452525">Rezerviši sto</a>
+      <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Otvori meni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="sadrzaj">
+
+    <!-- 2. HERO -->
+    <section class="hero" id="vrh">
+      <div class="hero__in container">
+        <div class="hero__text">
+          <p class="label">Restoran · Bar · Valjevo</p>
+          <h1><em>Napulj</em> u Valjevu, od jutra do ponoći</h1>
+          <p class="hero__sub">Sastojci iz Italije, srce odavde. Petra vas čeka od jutarnje kafe do poslednje čaše.</p>
+          <div class="hero__btns">
+            <a class="btn btn--gold" href="#meni">Pogledaj meni</a>
+            <!-- TODO: zameniti pravim linkom Petre na Woltu -->
+            <a class="btn btn--line" href="https://wolt.com/sr/srb/valjevo" target="_blank" rel="noopener">Naruči na Wolt</a>
+          </div>
+        </div>
+        <div class="hero__pics">
+          <!-- PRIVREMENE FOTOGRAFIJE (Unsplash): zameniti pravim slikama Petre -->
+          <img class="hero__arch" src="assets/hero-pica.jpg" width="1000" height="667" alt="Pica sa povrćem i sirom isečena na drvenoj dasci" fetchpriority="high">
+          <img class="hero__inset" src="assets/rizoto-losos.jpg" width="1000" height="667" alt="Losos sa hrskavom korom na rižotu">
+        </div>
+      </div>
+    </section>
+
+    <!-- Naš kraj (O nama): prvo naslov i tekst, pa slike -->
+    <section class="kraj" id="o-nama">
+      <div class="kraj__in container">
+        <div class="kraj__text reveal">
+          <p class="label">U srcu Valjeva</p>
+          <h2>Mesto za svaki sat dana</h2>
+          <p>Vuka Karadžića 15, nadomak Gradskog trga. Za jutarnju kafu, ručak u pauzi, porodično slavlje i dugu večeru u bašti. Petra je tu da se osećate kao kod kuće.</p>
+          <ul class="lines">
+            <li>Porodice i slavlja</li>
+            <li>Ekipe posle posla</li>
+            <li>Bašta za sunčane dane</li>
+            <li>Ljubimci dobrodošli</li>
+          </ul>
+        </div>
+        <div class="kraj__pics">
+          <!-- PRIVREMENE FOTOGRAFIJE (Unsplash): zameniti slikama pravog lokala -->
+          <img class="kraj__img1 reveal" src="assets/lokal.jpg" width="1000" height="667" loading="lazy" alt="Unutrašnjost restorana sa drvenim stolovima i velikim prozorima">
+          <img class="kraj__img2 reveal" src="assets/veceras.jpg" width="1000" height="667" loading="lazy" alt="Postavljen sto sa čašama i tanjirima za večeru">
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OD JUTRA DO PONOĆI -->
+    <section class="day" id="meni">
+      <div class="container">
+        <header class="head reveal">
+          <p class="label">Od jutra do ponoći</p>
+          <h2>Petra radi kad i vi</h2>
+          <p>Za svaki deo dana ima nešto ukusno.</p>
+        </header>
+        <ul class="day__grid">
+          <li class="dish reveal">
+            <div class="dish__img">
+              <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+              <img src="assets/dorucak.jpg" width="1000" height="667" loading="lazy" alt="Jaje na tostu sa avokadom i začinima">
+            </div>
+            <p class="dish__time">Od 06:30</p>
+            <h3>Doručak</h3>
+            <p>Srpski doručak, Petra omlet, cicvara i vrući uštipci.</p>
+          </li>
+          <li class="dish reveal">
+            <div class="dish__img">
+              <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+              <img src="assets/rucak.jpg" width="1000" height="667" loading="lazy" alt="Penne pasta u paradajz sosu na belom tanjiru">
+            </div>
+            <p class="dish__time">Sredina dana</p>
+            <h3>Ručak</h3>
+            <p>Paste, rižota i obrok salate. Sito i baš kako treba.</p>
+          </li>
+          <li class="dish reveal">
+            <div class="dish__img">
+              <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+              <img src="assets/tortilja.jpg" width="1000" height="667" loading="lazy" alt="Tortilja punjena piletinom i povrćem na dasci">
+            </div>
+            <p class="dish__time">Ceo dan</p>
+            <h3>Pica i tortilje</h3>
+            <p>Petra preporučuje, Kaprićoza, Cezar tortilja.</p>
+          </li>
+          <li class="dish reveal">
+            <div class="dish__img">
+              <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+              <img src="assets/bar.jpg" width="1000" height="667" loading="lazy" alt="Koktel sa ledom i začinskim biljem na šanku">
+            </div>
+            <p class="dish__time">Do ponoći</p>
+            <h3>Veče i bar</h3>
+            <p>Piće, društvo i dobra priča, u bašti ili za šankom.</p>
+          </li>
+        </ul>
+        <p class="day__hint" aria-hidden="true">Prevuci za još →</p>
+        <div class="section-cta"><a class="btn btn--line" href="meni.html">Pogledaj ceo meni</a></div>
+      </div>
+    </section>
+
+    <!-- 4. PETRA PREPORUČUJE -->
+    <section class="picks" id="petra">
+      <div class="container">
+        <header class="head reveal">
+          <p class="label">Petra preporučuje</p>
+          <h2>Ovo Petra voli</h2>
+          <p>Tri jela koja gosti naručuju iznova.</p>
+        </header>
+        <div class="picks__grid">
+          <article class="pick pick--big reveal">
+            <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+            <img src="assets/rizoto-losos.jpg" width="1000" height="667" loading="lazy" alt="Losos sa hrskavom korom na rižotu, poslužen na belom tanjiru">
+            <div class="pick__body">
+              <h3>Rižoto losos</h3>
+              <p class="says"><span>Petra kaže</span>Kremast, sa pravim lososom. Probajte, pa nam recite da nismo bili u pravu.</p>
+            </div>
+          </article>
+          <article class="pick reveal">
+            <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+            <img src="assets/pica-petra.jpg" width="1000" height="667" loading="lazy" alt="Pica sa zapečenom korom i paradajzom na dasci">
+            <div class="pick__body">
+              <h3>Pica „Petra preporučuje“</h3>
+              <p class="says"><span>Petra kaže</span>Napulj je daleko, ali ova pica to ne zna.</p>
+            </div>
+          </article>
+          <article class="pick reveal">
+            <!-- PRIVREMENA FOTOGRAFIJA (Unsplash) -->
+            <img src="assets/cevapi.jpg" width="1000" height="667" loading="lazy" alt="Pečeni ćevapi na tanjiru sa zelenom salatom">
+            <div class="pick__body">
+              <h3>Juneći ćevapi na kajmaku</h3>
+              <p class="says"><span>Petra kaže</span>Kajmak nije šala. Petra ga ne štedi.</p>
+            </div>
+          </article>
+        </div>
+        <div class="section-cta"><a class="btn btn--line" href="meni.html">Pogledaj ceo meni</a></div>
+      </div>
+    </section>
+
+    <!-- 5. RIBLJI SPECIJALITETI (sekcija u boji --more) -->
+    <section class="sea" id="riba">
+      <div class="sea__in container">
+        <div class="sea__text">
+          <header class="head reveal">
+            <p class="label label--gold">Iz mora</p>
+            <h2>Riblji specijaliteti</h2>
+            <p>Sveža riba, spremljena polako i bez žurbe.</p>
+          </header>
+          <ul class="sea__list">
+            <li class="reveal"><h3>Hobotnica na grilu</h3><p>Mekana iznutra, zlatna sa roštilja.</p></li>
+            <li class="reveal"><h3>Tuna stek</h3><p>Kratko na vatri, ružičasta u sredini.</p></li>
+            <li class="reveal"><h3>Brancin</h3><p>Nežna riba sa limunom i maslinovim uljem.</p></li>
+            <li class="reveal"><h3>Orada</h3><p>Klasik sa žara, lagana i sočna.</p></li>
+            <li class="reveal"><h3>Losos na žaru</h3><p>Sa koricom koja pucketa.</p></li>
+            <li class="reveal"><h3>Riblja plata za dve osobe</h3><p>Izbor ribe za deljenje, za dvoje.</p></li>
+          </ul>
+          <div class="section-cta"><a class="btn btn--light" href="meni.html">Pogledaj ceo meni</a></div>
+        </div>
+        <div class="sea__pics">
+          <!-- PRIVREMENE FOTOGRAFIJE (Unsplash) -->
+          <img class="sea__img1 reveal" src="assets/riba-losos.jpg" width="1000" height="667" loading="lazy" alt="Losos sa povrćem na tamnom tanjiru">
+          <img class="sea__img2 reveal" src="assets/riba-plata.jpg" width="1000" height="667" loading="lazy" alt="Tiganj sa plodovima mora, školjkama i limunom">
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DOMAĆE: prvo naslov i tekst, pa slike -->
+    <section class="home" id="domace">
+      <div class="home__in container">
+        <div class="home__panel reveal">
+          <p class="label">Domaće</p>
+          <h2>Domaći ukusi, kao kod kuće</h2>
+          <p>Jela koja znate iz kuće, spremljena sa pažnjom. Ćevapi i gurmanska pljeskavica na kajmaku, a kad se skupi društvo, Petra plata za dve osobe.</p>
+          <ul class="lines lines--big">
+            <li>Ćevapi na kajmaku</li>
+            <li>Gurmanska pljeskavica na kajmaku</li>
+            <li>Petra plata za dve osobe</li>
+          </ul>
+          <!-- TODO: meni.html je privremena stranica, zameniti pravom -->
+          <a class="btn btn--dark" href="meni.html">Pogledaj ceo meni</a>
+        </div>
+        <div class="home__pics">
+          <!-- PRIVREMENE FOTOGRAFIJE (Unsplash) -->
+          <img class="home__img1 reveal" src="assets/domace.jpg" width="1000" height="667" loading="lazy" alt="Roštilj sa ćevapima, mesom i prilozima na velikoj dasci">
+          <img class="home__img2 reveal" src="assets/daska.jpg" width="1000" height="667" loading="lazy" alt="Pečena rebra sa paradajzom na drvenoj dasci">
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. RECENZIJE -->
+    <section class="reviews" id="recenzije">
+      <div class="container">
+        <header class="head head--center reveal">
+          <p class="label label--ink">Gosti kažu</p>
+          <h2><span class="score">4.9</span> na Google-u</h2>
+          <p>Oko 890 recenzija. Gosti najviše hvale pastu sa lososom, ljubazno osoblje i toplu atmosferu.</p>
+        </header>
+        <!-- PRIVREMENO: citati ispod su primeri, zameniti pravim Google recenzijama pre objave -->
+        <ul class="reviews__grid">
+          <li class="quote reveal" data-placeholder="true">
+            <blockquote>„Pasta sa lososom je razlog što dolazim. A osoblje je predivno.“</blockquote>
+            <p class="quote__by">Marija S., stalna gošća</p>
+          </li>
+          <li class="quote reveal" data-placeholder="true">
+            <blockquote>„Došli smo sa psom, dobili činiju vode i osmeh. Vraćamo se.“</blockquote>
+            <p class="quote__by">Nikola P., gost sa četvoronožnim drugom</p>
+          </li>
+          <li class="quote reveal" data-placeholder="true">
+            <blockquote>„Topla atmosfera i pica baš kao u Napulju. Deca su oduševljena.“</blockquote>
+            <p class="quote__by">Jelena M., porodica iz Valjeva</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. POSETI NAS -->
+    <section class="visit" id="kontakt">
+      <div class="visit__in container">
+        <div class="visit__text reveal">
+          <p class="label">Poseti nas</p>
+          <h2>Sedite gde vam je najlepše</h2>
+          <p>Imamo baštu, a ljubimci su kod nas dobrodošli.</p>
+          <dl class="visit__info">
+            <div>
+              <dt>Adresa</dt>
+              <dd>Vuka Karadžića 15, Valjevo</dd>
+            </div>
+            <div>
+              <dt>Radno vreme</dt>
+              <dd>Pon-sub 06:30-00:00<br>Nedelja 07:30-00:00</dd>
+            </div>
+            <div>
+              <dt>Telefon</dt>
+              <dd><a href="tel:+381603452525">+381 60 3452525</a></dd>
+            </div>
+          </dl>
+          <p class="visit__status" id="status" hidden></p>
+          <div class="visit__btns">
+            <a class="btn btn--dark" href="tel:+381603452525">Rezerviši sto</a>
+            <a class="btn btn--line" href="https://wolt.com/sr/srb/valjevo" target="_blank" rel="noopener">Naruči na Wolt</a>
+          </div>
+        </div>
+        <div class="visit__map reveal">
+          <iframe title="Mapa: Restoran Bar Petra, Vuka Karadžića 15, Valjevo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Vuka+Karad%C5%BEi%C4%87a+15,+Valjevo&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. FOOTER -->
+  <footer class="foot">
+    <div class="foot__big container">
+      <p class="foot__hello">Vidimo se u <em>Valjevu.</em></p>
+    </div>
+    <div class="foot__in container">
+      <div class="foot__brand">
+        <img src="assets/logo-petra.png" width="80" height="80" loading="lazy" alt="Logo Restoran Bar Petra">
+        <p>Sastojci iz Italije, srce odavde.</p>
+      </div>
+      <div class="foot__col">
+        <h3>Kontakt</h3>
+        <p>Vuka Karadžića 15, Valjevo<br><a href="tel:+381603452525">+381 60 3452525</a></p>
+      </div>
+      <div class="foot__col">
+        <h3>Radno vreme</h3>
+        <p>Pon-sub 06:30-00:00<br>Nedelja 07:30-00:00</p>
+      </div>
+      <div class="foot__col">
+        <h3>Pratite Petru</h3>
+        <p>
+          <a href="https://wolt.com/sr/srb/valjevo" target="_blank" rel="noopener">Wolt</a><br>
+          <!-- TODO: zameniti pravim Instagram nalogom -->
+          <a href="#" aria-label="Instagram (uskoro)">Instagram</a>
+        </p>
+      </div>
+    </div>
+    <p class="foot__copy container"><span>Demo verzija sajta za Restoran Bar Petra.</span></p>
+  </footer>
+
+  <!-- Fiksna traka za mobilni: pojavljuje se kad hero dugmad izađu iz vidokruga -->
+  <div class="dock" id="dock">
+    <div class="dock__in">
+      <a class="btn btn--dark" href="tel:+381603452525">Rezerviši sto</a>
+      <a class="btn btn--gold" href="https://wolt.com/sr/srb/valjevo" target="_blank" rel="noopener">Naruči na Wolt</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

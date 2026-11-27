@@ -1,0 +1,371 @@
+/* Restoran Bar Petra, demo landing.
+   Smer: uzdrzan, uredjivacki, italijanska trattoria sa stilom. Tanke linije, lukovi, puno vazduha.
+   Skala: sve vrednosti font-size, spacing, padding, margin i gap su deljive sa 4.
+   Najmanja podrzana sirina: 360px. */
+
+:root {
+  --krem: #F6EFE2;
+  --krem-tamna: #EADFC8;
+  --papir: #FBF7EE;
+  --zlatna: #E3A318;
+  --zlatna-tamna: #8C5E0E;
+  --more: #10233A;
+  --mastilo: #17130F;
+
+  --font-naslov: "Fraunces", Georgia, serif;
+  --font-tekst: "DM Sans", system-ui, sans-serif;
+
+  /* Oblik: sve ostro (radius 0), jedini izuzetak je luk na glavnim fotografijama */
+  --luk: 999px 999px 0 0;
+  --gutter: 16px;
+  --nav-h: 72px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --hair: 1px solid rgba(23, 19, 15, 0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--krem);
+  color: var(--mastilo);
+  font-family: var(--font-tekst);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-width: 360px;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p, figure, dl, dd, blockquote { margin: 0; }
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--mastilo); outline-offset: 4px; }
+.sea :focus-visible, .foot :focus-visible { outline-color: var(--zlatna); }
+
+.container { width: 100%; max-width: 360px; margin-inline: auto; padding-inline: var(--gutter); position: relative; }
+main > section, .foot { overflow-x: clip; }
+html.menu-open { overflow: hidden; }
+
+.skip {
+  position: absolute; left: 16px; top: -64px; z-index: 100;
+  background: var(--mastilo); color: var(--krem); padding: 12px 16px; text-decoration: none;
+}
+.skip:focus { top: 8px; }
+
+/* ---------- tipografija ---------- */
+h1, h2, h3 { font-family: var(--font-naslov); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+h1 { font-size: 44px; padding-bottom: 4px; }
+h2 { font-size: 36px; padding-bottom: 4px; }
+h3 { font-size: 24px; }
+em { font-style: italic; color: var(--zlatna-tamna); }
+h1, h2, h3, blockquote, .says { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+
+.label {
+  font-size: 12px; font-weight: 500; line-height: 16px;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: rgba(140, 94, 14, 0.6);
+  margin-bottom: 8px;                 /* oznaka -> naslov: 8px */
+}
+.label--ink { color: rgba(23, 19, 15, 0.6); }
+.label--gold { color: rgba(227, 163, 24, 0.6); }
+
+.head > h2 + p, .kraj__text h2 + p, .home__panel h2 + p, .visit__text h2 + p { margin-top: 12px; }
+.home__panel h2 + p { max-width: 48ch; margin-bottom: 24px; }  /* naslov -> tekst: 12px */
+.head p:last-child { max-width: 52ch; }
+.head--center { text-align: center; }
+.head--center p:last-child { margin-inline: auto; }
+.head { margin-bottom: 32px; }
+
+/* ---------- dugmad ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 16px 28px;
+  border: 1px solid var(--mastilo);
+  font-family: var(--font-tekst); font-size: 12px; font-weight: 700; line-height: 16px;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.btn--gold { background: var(--zlatna); border-color: var(--zlatna); color: var(--mastilo); }
+.btn--gold:hover { background: var(--mastilo); border-color: var(--mastilo); color: var(--zlatna); }
+.btn--dark { background: var(--mastilo); color: var(--krem); }
+.btn--dark:hover { background: var(--zlatna-tamna); border-color: var(--zlatna-tamna); }
+.btn--line { background: transparent; color: var(--mastilo); }
+.btn--light { background: transparent; color: var(--krem); border-color: var(--krem); }
+.btn--light:hover { background: var(--zlatna); border-color: var(--zlatna); color: var(--mastilo); }
+.section-cta { margin-top: 32px; }
+.section-cta .btn { width: 100%; }
+.btn--line:hover { background: var(--mastilo); color: var(--krem); }
+
+/* ---------- navigacija ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--krem);
+  border-bottom: 1px solid transparent; transition: border-color .3s;
+}
+.nav.is-stuck { border-bottom-color: rgba(23, 19, 15, 0.2); }
+.nav__in { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: var(--nav-h); }
+.nav__logo, .nav__burger { position: relative; z-index: 2; }
+.nav__logo img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.nav__cta { display: none; min-height: 40px; padding: 12px 16px; margin-left: auto; }
+.nav__back { min-height: 40px; padding: 12px 16px; margin-left: auto; }
+.nav__burger {
+  margin-left: auto; width: 48px; height: 48px; border: 0; background: transparent; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+}
+.nav__burger span { display: block; width: 24px; height: 1px; background: var(--mastilo); transition: transform .3s var(--ease), opacity .2s; }
+.nav__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.nav__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+.nav__links {
+  position: fixed; inset: 0; z-index: 1;
+  display: none; flex-direction: column; overflow-y: auto;
+  padding: calc(var(--nav-h) + 16px) max(16px, calc(50% - 164px)) 32px;
+  background: var(--krem);
+}
+.nav__links.is-open { display: flex; }
+.nav__links a {
+  padding: 20px 0; font-size: 36px; line-height: 40px; text-decoration: none;
+  font-family: var(--font-naslov); border-bottom: var(--hair);
+}
+.nav__foot { margin-top: auto; padding-top: 32px; }
+.nav__foot p { font-size: 16px; }
+.nav__links .nav__foot a { display: inline-block; padding: 8px 0; font-size: 20px; line-height: 28px; border: 0; font-weight: 500; }
+.nav__links a:hover { color: var(--zlatna-tamna); }
+
+/* ---------- hero ---------- */
+.hero { padding: 24px 0 64px; }
+.hero__in { display: grid; gap: 40px; }
+.hero__sub { margin-top: 12px; font-size: 16px; max-width: 44ch; }
+.hero__btns { display: grid; gap: 12px; margin-top: 32px; }
+.hero__btns .btn, .visit__btns .btn { width: 100%; }
+
+.hero__pics { position: relative; padding-bottom: 48px; }
+.hero__arch { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--luk); }
+.hero__inset {
+  position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1; object-fit: cover;
+  border: 8px solid var(--krem);
+}
+
+
+/* ---------- nas kraj ---------- */
+.kraj { padding: 64px 0; }
+.kraj__in { display: grid; gap: 40px; }
+.kraj__pics { position: relative; padding-bottom: 48px; }
+.kraj__img1 { width: 84%; aspect-ratio: 4 / 5; object-fit: cover; }
+.kraj__img2 { position: absolute; right: 0; bottom: 0; width: 52%; aspect-ratio: 1 / 1; object-fit: cover; border: 8px solid var(--krem); }
+.kraj__text p:not(.label) { max-width: 48ch; }
+.lines { margin-top: 24px; border-top: var(--hair); }
+.lines li { padding: 12px 0; border-bottom: var(--hair); font-weight: 500; }
+.lines--big li { font-family: var(--font-naslov); font-size: 24px; line-height: 32px; padding: 16px 0; font-weight: 400; }
+.lines--big { margin-bottom: 32px; }
+
+/* ---------- od jutra do ponoci ---------- */
+.day { padding: 64px 0; background: var(--papir); overflow: hidden; }
+.day__grid {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 0;
+  padding-bottom: 8px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.day__grid::-webkit-scrollbar { display: none; }
+.day__grid .dish { flex: 0 0 76%; scroll-snap-align: start; }
+.day__hint { margin-top: 16px; font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zlatna-tamna); }
+.dish__img { overflow: hidden; margin-bottom: 16px; }
+.dish__img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 1s var(--ease); }
+.dish:hover .dish__img img { transform: scale(1.05); }
+.dish__time { font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zlatna-tamna); margin-bottom: 8px; }
+.dish h3 + p { margin-top: 12px; max-width: 32ch; }
+
+/* ---------- petra preporucuje ---------- */
+.picks { padding: 64px 0; }
+.picks__grid { display: grid; gap: 48px; }
+.pick { display: flex; flex-direction: column; gap: 20px; }
+.pick img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.pick__body h3 { margin-bottom: 16px; }
+.says { border-left: 2px solid var(--zlatna); padding-left: 16px; font-family: var(--font-naslov); font-style: italic; font-size: 20px; line-height: 28px; max-width: 36ch; }
+.says span {
+  display: block; margin-bottom: 4px; font-family: var(--font-tekst); font-style: normal;
+  font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zlatna-tamna);
+}
+
+/* ---------- riba (--more) ---------- */
+.sea { background: var(--more); color: var(--krem); padding: 64px 0; }
+.sea__in { display: grid; gap: 48px; }
+.sea h2 { color: var(--krem); }
+.sea .head p:last-child { color: #D6DCE4; }
+.sea__list li { padding: 16px 0; border-bottom: 1px solid rgba(246, 239, 226, 0.2); }
+.sea__list li:first-child { border-top: 1px solid rgba(246, 239, 226, 0.2); }
+.sea__list h3 { font-size: 20px; }
+.sea__list p { margin-top: 4px; color: #D6DCE4; }
+.sea__pics { display: grid; gap: 16px; align-content: start; }
+.sea__pics img { width: 100%; object-fit: cover; }
+.sea__img1 { aspect-ratio: 4 / 5; border-radius: var(--luk); }
+.sea__img2 { aspect-ratio: 16 / 9; }
+
+/* ---------- domace ---------- */
+.home { padding: 64px 0; }
+.home__in { display: grid; gap: 40px; }
+.home__pics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.home__pics img { width: 100%; object-fit: cover; }
+.home__img1 { grid-column: 1 / -1; aspect-ratio: 16 / 11; }
+.home__img2 { grid-column: 1 / -1; aspect-ratio: 16 / 7; }
+.home__panel .btn { width: 100%; }
+
+/* privremena stranica menija */
+.stub { padding-block: 64px 96px; }
+.stub h1 { margin-top: 8px; }
+.stub p:not(.label) { margin-top: 12px; max-width: 44ch; }
+.stub__btns { display: grid; gap: 12px; margin-top: 32px; }
+
+/* ---------- recenzije (zlatna pozadina) ---------- */
+.reviews { background: var(--zlatna); padding: 64px 0; }
+.score { font-size: 88px; line-height: 1; font-style: italic; font-weight: 400; display: inline-block; }
+.reviews .head p:last-child { color: var(--mastilo); }
+.reviews__grid { display: grid; gap: 32px; }
+.quote { border-top: 1px solid var(--mastilo); padding-top: 24px; }
+.quote blockquote { font-family: var(--font-naslov); font-size: 24px; line-height: 32px; font-weight: 400; }
+.quote__by { margin-top: 16px; font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; }
+
+/* ---------- poseti nas ---------- */
+.visit { padding: 64px 0; }
+.visit__in { display: grid; gap: 40px; }
+.visit__info { display: grid; margin-top: 24px; border-top: var(--hair); }
+.visit__info > div { padding: 16px 0; border-bottom: var(--hair); }
+.visit__info dt { font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zlatna-tamna); margin-bottom: 4px; }
+.visit__info a { font-weight: 700; display: inline-block; padding: 8px 0; }
+.visit__status { margin-top: 16px; font-family: var(--font-naslov); font-style: italic; font-size: 20px; line-height: 28px; }
+.visit__btns { display: grid; gap: 12px; margin-top: 24px; }
+.visit__map { min-height: 360px; background: var(--krem-tamna); }
+.visit__map iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; filter: sepia(0.25) saturate(0.85); }
+
+/* ---------- footer ---------- */
+.foot { background: var(--more); color: var(--krem); padding: 64px 0 24px; }
+.foot__hello { font-family: var(--font-naslov); font-weight: 400; font-size: 44px; line-height: 1.1; padding-bottom: 8px; }
+.foot__hello em { color: var(--zlatna); }
+.foot__big::after { content: ""; display: block; height: 1px; background: rgba(246, 239, 226, 0.2); margin: 40px 0; }
+.foot__in { display: grid; gap: 32px; }
+.foot__brand { display: flex; align-items: center; gap: 16px; }
+.foot__brand img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+.foot__brand p { font-family: var(--font-naslov); font-size: 20px; line-height: 1.3; max-width: 16ch; }
+.foot h3 { font-family: var(--font-tekst); font-size: 12px; line-height: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zlatna); margin-bottom: 8px; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--zlatna); }
+.foot__copy span { display: block; padding-top: 16px; border-top: 1px solid rgba(246, 239, 226, 0.2); }
+.foot__copy { margin-top: 40px; font-size: 12px; line-height: 16px; color: #B8C2CF; }
+
+.dock {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(246, 239, 226, 0.96); border-top: var(--hair);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transform: translateY(100%); transition: transform .5s var(--ease);
+}
+.dock.is-on { transform: none; }
+.dock__in { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 360px; margin-inline: auto; padding: 12px var(--gutter); }
+.dock .btn { padding-inline: 8px; }
+.foot { padding-bottom: 96px; }
+
+/* ---------- animacije (spore, tihe) ---------- */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0ms); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__text > * { animation: rise 1s var(--ease) both; }
+  .hero__text > :nth-child(2) { animation-delay: 100ms; }
+  .hero__text > :nth-child(3) { animation-delay: 200ms; }
+  .hero__text > :nth-child(4) { animation-delay: 300ms; }
+  .hero__arch { animation: rise 1.2s var(--ease) 150ms both; }
+  .hero__inset { animation: rise 1.2s var(--ease) 450ms both; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ============ TABLET 768 ============ */
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+  .container { max-width: 1200px; }
+  .nav__cta { display: inline-flex; }
+  .nav__burger { margin-left: 8px; }
+  .section-cta .btn, .home__panel .btn { width: auto; }
+  .stub__btns { display: flex; }
+  h1 { font-size: 60px; }
+  h2 { font-size: 44px; }
+  .nav__cta { min-height: 48px; padding: 16px 28px; }
+  .hero { padding: 32px 0 96px; }
+  .hero__sub { font-size: 20px; }
+  .hero__pics { max-width: 560px; }
+  .kraj, .home, .day, .visit { padding-block: 112px; }
+  .head { margin-bottom: 48px; }
+  .kraj__in { grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
+  .section-cta { margin-top: 48px; }
+  .day__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 32px; overflow: visible; margin-inline: 0; padding: 0; }
+  .day__grid .dish { flex: none; }
+  .day__hint, .dock { display: none; }
+  .foot { padding-bottom: 24px; }
+  .hero__btns, .visit__btns { display: flex; flex-wrap: wrap; }
+  .hero__btns .btn, .visit__btns .btn { width: auto; }
+  .picks { padding-block: 112px; }
+  .picks__grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+  .pick--big { grid-column: 1 / -1; display: grid; grid-template-columns: 7fr 5fr; align-items: center; gap: 40px; }
+  .pick--big .pick__body h3 { font-size: 32px; }
+  .sea { padding-block: 112px; }
+  .sea__in { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .home__in { grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
+  .reviews { padding-block: 112px; }
+  .score { font-size: 120px; }
+  .reviews__grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .quote blockquote { font-size: 20px; line-height: 28px; }
+  .visit__in { grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; }
+  .foot__hello { font-size: 72px; }
+  .foot__in { grid-template-columns: 2fr 1fr 1fr 1fr; align-items: start; }
+}
+
+/* ============ DESKTOP 1100+ ============ */
+@media (min-width: 1100px) {
+  :root { --gutter: 48px; }
+  .nav__burger { display: none; }
+  .nav__foot { display: none; }
+  .nav__links {
+    position: static; z-index: auto; display: flex; flex-direction: row; gap: 40px; overflow: visible;
+    padding: 0; background: transparent; border: 0; margin-inline: auto;
+  }
+  .nav__links a { padding: 8px 0; line-height: 16px; font-size: 12px; font-family: var(--font-tekst); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; border: 0; position: relative; }
+  .nav__links a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: var(--zlatna-tamna); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease);
+  }
+  .nav__links a:hover::after, .nav__links a:focus-visible::after { transform: scaleX(1); }
+  .nav__cta { margin-left: 0; }
+
+  h1 { font-size: 76px; }
+  h2 { font-size: 56px; }
+  .hero { padding: 40px 0 112px; }
+  .hero__in { grid-template-columns: 7fr 5fr; align-items: center; gap: 64px; }
+  .hero__pics { max-width: none; }
+  .hero__inset { left: -64px; width: 40%; }
+  .kraj__in { grid-template-columns: 5fr 6fr; gap: 96px; }
+  .day__grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .picks__grid { grid-template-columns: repeat(12, 1fr); grid-template-rows: 1fr 1fr; gap: 48px 32px; }
+  .pick--big { grid-column: 1 / 8; grid-row: 1 / 3; display: flex; align-items: stretch; gap: 24px; }
+  .pick--big .pick__body h3 { font-size: 32px; }
+  .pick:not(.pick--big) { grid-column: 8 / 13; align-self: center; display: grid; grid-template-columns: 5fr 7fr; align-items: center; gap: 24px; }
+  .pick:not(.pick--big) img { aspect-ratio: 1 / 1; }
+  .picks__grid .pick:nth-child(2) { align-self: start; padding-top: 48px; }
+  .picks__grid .pick:nth-child(3) { align-self: end; padding-bottom: 48px; }
+  .sea__in { grid-template-columns: 7fr 5fr; gap: 96px; align-items: center; }
+  .sea__list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  .sea__list li:nth-child(2) { border-top: 1px solid rgba(246, 239, 226, 0.2); }
+  .home__in { grid-template-columns: 5fr 7fr; gap: 96px; }
+  .home__img2 { aspect-ratio: 16 / 6; }
+  .quote blockquote { font-size: 28px; line-height: 36px; }
+  .visit__in { gap: 96px; }
+}
